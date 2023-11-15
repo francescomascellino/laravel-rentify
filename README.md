@@ -33,11 +33,45 @@ npm i
 SE NECESSARIO CREARE LA CARTELLA DI SALVATAGGIO DEI FILES IN storage/app/public/[image disk folder]
 
 ## MIGRARE LE TABELLE
+
+MIGRATION
+```php
+Schema::create('cars', function (Blueprint $table) {
+            $table->id();
+            $table->string('image')->nullable();
+            $table->string('model')->nullable();
+            $table->string('brand')->nullable();
+            $table->decimal('price', 5, 2);
+            $table->tinyInteger('seats')->default(4);
+            $table->string('transmission')->nullable();
+            $table->string('fuel_type')->nullable();
+            $table->text('notes');
+            $table->timestamps();
+        });
+```
+
 ```bash
 php artisan migrate
 ```
 
 ## SEEDARE LE TABELLE
+
+SEEDER
+```php
+for ($i = 0; $i < 10; $i++) {
+            $car = new Car();
+            $car->image = 'car_images/' . $faker->image('public/storage/car_images', fullPath: false);
+            $car->model = $faker->word;
+            $car->brand = $faker->word;
+            $car->price = $faker->randomFloat(2, 0, 999);
+            $car->seats = $faker->numberBetween(2, 7);
+            $car->transmission = $faker->randomElement(['manual', 'automatic']);
+            $car->fuel_type = $faker->randomElement(['petrol', 'diesel', 'electric']);
+            $car->notes = $faker->paragraph;
+            $car->save();
+        }
+```
+
 ```bash
 php artisan db:seed --class=CarSeeder
 ```
