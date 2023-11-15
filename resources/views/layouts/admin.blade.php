@@ -76,8 +76,7 @@
                                         href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                     <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -107,7 +106,7 @@
 
                                 <a class="nav-link {{ Route::currentRouteName() === 'admin.cars.create' ? 'active' : '' }}"
                                     href="{{ route('admin.cars.create') }}"
-                                    aria-current="page">{{ __('add Car') }}</a>
+                                    aria-current="page">{{ __('Add New Car') }}</a>
 
                                 <a class="nav-link" href="#">Link</a>
                                 <a class="nav-link" href="#"> link</a>

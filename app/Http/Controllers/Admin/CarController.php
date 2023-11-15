@@ -16,7 +16,7 @@ class CarController extends Controller
     public function index()
     {
 
-        return view('admin.cars.index', ['cars' => Car::paginate(9)]);
+        return view('admin.cars.index', ['cars' => Car::paginate(5)]);
     }
 
     /**
