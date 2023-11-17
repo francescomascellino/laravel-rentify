@@ -20,15 +20,20 @@
             @csrf
             @method('put')
 
-            <div class="d-flex">
+            <div class="d-flex flex-column">
                 <div class="mb-3">
-                    <label for="image" class="form-label">image</label>
+
+                    <div>
+                    <img class="img-fluid" style="height: 200px" src="{{ asset('storage/' . $car->image) }}" alt="">
+                </div>
+
+                    <label for="image" class="form-label">Car Image</label>
                     <input type="file" class="form-control" name="image" id="image" aria-describedby="imageHelper"
                         placeholder="">
                     <small id="imageHelper" class="form-text text-muted">image for car</small>
                 </div>
+                
 
-                <img src="{{ asset('storage/' . $car->image) }}" alt="">
             </div>
 
             <div class="mb-3">
@@ -39,21 +44,21 @@
             </div>
 
             <div class="mb-3">
-                <label for="brand" class="form-label">brand</label>
+                <label for="brand" class="form-label">Car Brand</label>
                 <input type="text" class="form-control" name="brand" id="brand" aria-describedby="brandHelper"
                     placeholder="brand" value="{{ old('brand', $car->brand) }}">
                 <small id="brandHelper" class="form-text text-muted">type a brand</small>
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">price</label>
+                <label for="price" class="form-label">Price</label>
                 <input type="number" class="form-control" name="price" id="price" aria-describedby="priceHelper"
                     placeholder="price" value="{{ old('price', $car->price) }}">
                 <small id="priceHelper" class="form-text text-muted">type a price</small>
             </div>
 
             <div class="mb-3">
-                <label for="seats" class="form-label">seats</label>
+                <label for="seats" class="form-label">Seats</label>
                 <input type="number" class="form-control" name="seats" id="seats" aria-describedby="seatsHelper"
                     placeholder="4" value="{{ old('seats', $car->seats) }}">
                 <small id="seatsHelper" class="form-text text-muted">type a seats</small>
@@ -69,7 +74,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="fuel_type" class="form-label">fuel type</label>
+                <label for="fuel_type" class="form-label">Fuel type</label>
                 <select class="form-select" name="fuel_type" id="fuel_type">
                     <option disabled>Select one</option>
                     <option value="diesel" {{ $car->fuel_type == 'diesel' ? 'selected' : '' }}>Diesel</option>
@@ -81,7 +86,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="notes" class="form-label">notes</label>
+                <label for="notes" class="form-label">Notes</label>
                 <textarea class="form-control" name="notes" id="notes" rows="5">{{ old('notes', $car->notes) }}</textarea>
             </div>
 

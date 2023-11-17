@@ -68,7 +68,23 @@ class CarController extends Controller
      */
     public function update(UpdateCarRequest $request, Car $car)
     {
-        //
+        $val_data = $request->validated();
+
+        if ($request->has('image')) {
+
+            if (Storage::exists($car->image)) {
+                Storage::delete($car->image);
+            }
+
+            $path = Storage::put('car_images', $request->image);
+            $val_data['image'] = $path;
+        }
+
+        // dd($val_data);
+
+        $car->update($val_data);
+
+        return redirect()->route('admin.cars.show', $car)->with('message', 'Car added succefully');
     }
 
     /**

@@ -11,7 +11,7 @@ class UpdateCarRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class UpdateCarRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'brand' => 'required',
+            'model' => 'required',
+            'image' => 'nullable | image |max:200',
+            'price' => 'required',
+            'seats' => 'nullable',
+            'transmission' => 'nullable | in:automatic,manual',
+            'fuel_type' => 'nullable | in:diesel,petrol,electric,gas,hybrid',
+            'notes' => 'nullable'
         ];
     }
 }
